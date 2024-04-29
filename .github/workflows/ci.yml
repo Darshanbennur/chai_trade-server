@@ -30,4 +30,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f darshanbennur/chai-trade-01:latest
       - name: Run Docker Container
-        run: docker run -d -p 4000:4000 --name genesis-server darshanbennur/chai-trade-01:latest
+        run: docker run -d -p 4000:4000 --name chai-trade-server darshanbennur/chai-trade-01:latest
