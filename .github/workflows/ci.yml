@@ -18,16 +18,16 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t darshanbennur/chai-trade-03:latest .
-          docker push darshanbennur/chai-trade-03:latest
+          docker build -t darshanbennur/chai-trade-04:latest .
+          docker push darshanbennur/chai-trade-04:latest
           
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
       - name: Pull image from docker hub
-        run: docker pull darshanbennur/chai-trade-03:latest
+        run: docker pull darshanbennur/chai-trade-04:latest
       - name: Delete old container
-        run: docker rm -f darshanbennur/chai-trade-03:latest
+        run: docker rm -f darshanbennur/chai-trade-04:latest
       - name: Run Docker Container
-        run: docker run -d -p 4000:4000 --name web-server-1 darshanbennur/chai-trade-03:latest
+        run: docker run -d -p 4000:4000 --name web-server-2 darshanbennur/chai-trade-04:latest
