@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs')
+const solr = require('solr-client');
 const MentorApplication = require('./models/MentorApplication.js')
 // const redis = require('redis');
 
@@ -16,6 +17,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
+
+const client = solr.createClient();
+const obj = await client.add({ id : 12, title_t : 'Hello' });
+console.log('Solr response:', obj);
 
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.DB_URI, {
