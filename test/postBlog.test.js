@@ -25,4 +25,3 @@ describe('Blog Posting', function() {
     });
 
 });
-
