@@ -8,9 +8,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs')
 const MentorApplication = require('./models/MentorApplication.js')
-// const redis = require('redis');
-
-// const redisClient = redis.createClient();
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -36,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
+
 const userRoutes = require('./routes/user');
 const simulatorRoute = require('./routes/simulator');
 const utilRoutes = require('./routes/util');
@@ -45,6 +43,26 @@ const newsRoute = require('./routes/news');
 const blogRoute = require('./routes/blog');
 const chartRoute = require('./routes/chart');
 const educationalRoutes = require('./routes/EducationalResources')
+
+const swaggerJSDoc = require('swagger-jsdoc')
+const swaggerUI = require('swagger-ui-express')
+
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Chai Trade Application',
+            version: '1.0.0'
+        },
+        servers: [{
+            url: 'http://localhost:4000'
+        }]
+    },
+    apis: ['./routes/*.js', './index.js']
+}
+
+const swaggerspec = swaggerJSDoc(options)
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerspec))
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
