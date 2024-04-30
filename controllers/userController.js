@@ -12,7 +12,6 @@ const getUserDetails = async (req, res) => {
 const verifyCookie = async (req, res, next) => {
     // const booleanCookie = req.cookies.isLoggedIn;
     const userID = req.body.userID;
-    // console.log(booleanCookie)
     if (userID) {
         const users = await User.findById(userID)
         return res.json({
