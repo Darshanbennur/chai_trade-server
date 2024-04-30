@@ -27,6 +27,12 @@ jobs:
     steps:
       - name: Pull image from docker hub
         run: docker pull darshanbennur/chai-trade-05:latest
+
+      - name: Stop old container
+        run: docker stop web-server-3
+      - name: Delete old container
+        run: docker rm -f web-server-3
+
       - name: Delete old container
         run: docker rm -f darshanbennur/chai-trade-05:latest
       - name: Run Docker Container
