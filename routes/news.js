@@ -4,9 +4,18 @@ const router = express.Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: News
+ *   description: API endpoints for News Articles
+ */
+
+
+/**
+ * @swagger
  * /api/news/getAllNews:
  *   get:
  *     summary: Get all news
+ *     tags: [News] 
  *     description: Retrieves all news articles.
  *     responses:
  *       200:
