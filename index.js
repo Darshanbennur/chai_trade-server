@@ -55,7 +55,7 @@ const options = {
             version: '1.0.0'
         },
         servers: [{
-            url: 'http://localhost:4000'
+            url: 'https://chai-trade-server.onrender.com'
         }]
     },
     apis: ['./routes/*.js', './index.js']

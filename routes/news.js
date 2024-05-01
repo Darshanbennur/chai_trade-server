@@ -1,5 +1,5 @@
 const express = require('express')
-const { getAllNews } = require('../controllers/newsController.js')
+const { getAllNews, getAllNewsWithoutCache } = require('../controllers/newsController.js')
 const router = express.Router();
 
 /**
@@ -40,6 +40,8 @@ const router = express.Router();
  *         description: Internal server error.
  */
 router.get('/getAllNews', getAllNews);
+
+router.get('/getAllNewsWithoutCache', getAllNewsWithoutCache)
 
 router.use((err, req, res, next) => {
     console.error(err.stack);

@@ -31,4 +31,19 @@ const getAllNews = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllNews };
+const getAllNewsWithoutCache = async (req, res, next) => {
+    try {
+        const result = await News.find();
+        res.status(200).json({
+            data: result
+        });
+    } catch (err) {
+        console.error('Error retrieving news data:', err);
+        res.status(500)
+            .json({
+                err: 'Internal server error'
+            });
+    }
+}
+
+module.exports = { getAllNews, getAllNewsWithoutCache };
